@@ -26,6 +26,7 @@ body {
     background-color: var(--black) !important;
     border-bottom: 3px solid var(--red);
     padding: 1rem 0;
+    z-index: 9999;
 }
 
 .nav-link {
