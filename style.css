@@ -1,36 +1,29 @@
-/* =========================================
-   1. CORE SETTINGS (การตั้งค่าพื้นฐาน)
-   ========================================= */
+/* --- Global Settings --- */
 :root {
-    --red: #D00000;       /* สีแดงธีมหลัก */
-    --black: #000000;     /* สีดำ */
-    --white: #ffffff;     /* สีขาว */
-    --prompt: 'Prompt', sans-serif; /* ฟอนต์ */
+    --red: #D00000;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #f4f4f4;
 }
 
 body {
-    font-family: var(--prompt);
+    font-family: 'Prompt', sans-serif;
     background-color: var(--white);
     color: var(--black);
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
 }
 
-.text-red { color: var(--red) !important; }
-
-/* =========================================
-   2. NAVBAR (แถบเมนู)
-   ========================================= */
+/* --- Navbar --- */
 .navbar {
     background-color: var(--black) !important;
     border-bottom: 3px solid var(--red);
     padding: 1rem 0;
-    z-index: 9999;
+    z-index: 1000;
 }
 
 .nav-link {
     color: rgba(255,255,255,0.8) !important;
+    font-weight: 400;
     transition: 0.3s;
 }
 
@@ -38,114 +31,119 @@ body {
     color: var(--red) !important;
 }
 
-/* =========================================
-   3. HERO SECTION (พื้นหลัง)
-   ========================================= */
+/* --- Hero Section (หน้าแรก) --- */
 .hero-section {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                url('BG.jpg'); /* ใช้รูปพื้นหลังรวม */
+    /* ใส่รูปพื้นหลังที่นี่ */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                url('BG.jpg'); 
     background-size: cover;
-    background-position: center bottom;
-    background-attachment: fixed;
+    background-position: center bottom; /* เน้นให้เห็นส่วนล่างของภาพ */
+    background-attachment: fixed; /* เอฟเฟกต์เลื่อนแล้วภาพนิ่ง */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* =========================================
-   4. CARD STYLES (การ์ดทีมงาน)
-   ========================================= */
-.red-line {
-    width: 60px;
-    height: 4px;
-    background-color: var(--red);
-    margin: 15px auto;
-}
-
-/* กล่องทีมงาน (สำคัญมากสำหรับหน้านี้) */
-.team-card {
-    padding: 0; /* รูปชนขอบ */
-    background: var(--white);
-    border: 1px solid #eee;
-    border-bottom: 4px solid var(--red);
-    height: 100%;
-    transition: all 0.4s ease;
-    text-align: center;
-    overflow: hidden;
-}
-
-.team-card:hover {
-    transform: translateY(-10px);
-    border: 1px solid var(--red);
-    border-bottom: 6px solid var(--red);
-    box-shadow: 0 15px 35px rgba(208, 0, 0, 0.15);
-}
-
-.team-card h3, .team-card h6 {
-    color: var(--black) !important;
-    font-weight: 700;
-    margin-top: 15px;
-}
-
-.team-card p {
-    color: #555 !important;
-}
-
-/* =========================================
-   5. IMAGES (รูปภาพทีมงาน)
-   ========================================= */
-.team-img {
-    width: 100%;
-    height: 600px;      /* ความสูงรูป */
-    object-fit: cover;  /* ขยายเต็มกรอบ */
-    
-    /* !! สำคัญ: แก้รูป TTT.jpg หัวขาด !! */
-    object-position: top center; 
-    
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.team-card:hover .team-img {
-    transform: scale(1.05); /* ซูมนิดหน่อยตอนชี้ */
-}
-
-/* =========================================
-   6. COMPONENTS (ปุ่ม & QR)
-   ========================================= */
+/* --- Buttons --- */
 .btn-red-lg {
     background-color: var(--red);
-    color: white;
-    padding: 12px 30px;
-    text-decoration: none;
-    font-weight: bold;
+    color: var(--white);
     border: 2px solid var(--red);
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
     transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-red-lg:hover {
     background-color: transparent;
     color: var(--red);
+    transform: translateY(-3px);
 }
 
-.policy-card { /* เผื่อใช้ในหน้า index */
-    padding: 40px 25px;
+/* --- Policy Cards (นโยบาย) --- */
+.policy-card {
     background: white;
-    border-bottom: 4px solid var(--red);
-    height: 100%;
+    padding: 40px 20px;
+    border-radius: 10px;
     text-align: center;
+    border-bottom: 5px solid var(--red);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     transition: 0.4s;
+    height: 100%; /* ให้กล่องเท่ากัน */
 }
-.policy-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-.policy-icon { font-size: 2.5rem; color: var(--red); margin-bottom: 20px; }
 
-/* =========================================
-   7. ANIMATIONS
-   ========================================= */
+.policy-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.policy-icon {
+    font-size: 3rem;
+    color: var(--red);
+    margin-bottom: 20px;
+}
+
+.red-line {
+    width: 80px;
+    height: 5px;
+    background-color: var(--red);
+    margin-top: 15px;
+}
+
+/* --- Team Page (หน้าสมาชิก) --- */
+.team-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    border-bottom: 5px solid var(--red);
+}
+
+/* ค้นหาและแก้ไขส่วนนี้ใน style.css */
+.team-img {
+    width: 100%;
+    height: 600px;      /* ความสูงคงที่ของกรอบรูป */
+    object-fit: cover;  /* สั่งให้ขยายเต็มกรอบโดยไม่เบี้ยว */
+
+    /* !!! บรรทัดนี้สำคัญที่สุดครับ !!! */
+    /* สั่งให้จัดตำแหน่งรูปโดยยึด "ด้านบนตรงกลาง" เป็นหลักเสมอ */
+    object-position: top center;
+    /* -------------------------------- */
+
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- Complaint Page (หน้าแจ้งเรื่อง) --- */
+.complaint-container {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.google-form-wrapper {
+    position: relative;
+    width: 100%;
+    height: 900px; /* ความสูงฟอร์ม */
+}
+
+@media (max-width: 768px) {
+    .google-form-wrapper {
+        height: 1100px; /* เพิ่มความสูงในมือถือ */
+    }
+}
+
+/* --- Animations --- */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: all 0.8s ease-out;
 }
 
 .fade-in-up.visible {
@@ -153,7 +151,18 @@ body {
     transform: translateY(0);
 }
 
+/* สำหรับตัวเลือกหน่วงเวลาแสดงผล */
 .delay-100 { transition-delay: 0.1s; }
 .delay-200 { transition-delay: 0.2s; }
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
+
+/* --- Footer --- */
+footer {
+    padding: 40px 0;
+    letter-spacing: 1px;
+}
+
+.text-red {
+    color: var(--red) !important;
+}
