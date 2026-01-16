@@ -1,168 +1,61 @@
-/* --- Global Settings --- */
 :root {
     --red: #D00000;
     --black: #000000;
     --white: #ffffff;
-    --gray: #f4f4f4;
 }
 
-body {
-    font-family: 'Prompt', sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-    overflow-x: hidden;
-}
+body { font-family: 'Prompt', sans-serif; background-color: var(--white); }
 
-/* --- Navbar --- */
-.navbar {
-    background-color: var(--black) !important;
-    border-bottom: 3px solid var(--red);
-    padding: 1rem 0;
-    z-index: 1000;
-}
+/* Navbar */
+.navbar { background-color: var(--black) !important; border-bottom: 3px solid var(--red); z-index: 1000; }
+.nav-link.active { color: var(--red) !important; font-weight: 600; }
 
-.nav-link {
-    color: rgba(255,255,255,0.8) !important;
-    font-weight: 400;
-    transition: 0.3s;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: var(--red) !important;
-}
-
-/* --- Hero Section (หน้าแรก) --- */
+/* Hero Section */
 .hero-section {
     height: 100vh;
-    /* ใส่รูปพื้นหลังที่นี่ */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                url('BG.jpg'); 
-    background-size: cover;
-    background-position: center bottom; /* เน้นให้เห็นส่วนล่างของภาพ */
-    background-attachment: fixed; /* เอฟเฟกต์เลื่อนแล้วภาพนิ่ง */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('BG.jpg');
+    background-size: cover; background-position: center;
+    background-attachment: fixed;
+    display: flex; align-items: center; justify-content: center;
 }
 
-/* --- Buttons --- */
+/* ปุ่มสีแดงทั้งหมด */
 .btn-red-lg {
-    background-color: var(--red);
-    color: var(--white);
-    border: 2px solid var(--red);
-    padding: 12px 30px;
-    border-radius: 5px;
+    background-color: var(--red) !important;
+    color: var(--white) !important;
+    border: 2px solid var(--red) !important;
+    padding: 12px 25px;
     font-weight: 600;
-    text-transform: uppercase;
     transition: 0.3s;
+    border-radius: 5px;
     text-decoration: none;
-    display: inline-block;
 }
-
 .btn-red-lg:hover {
-    background-color: transparent;
-    color: var(--red);
+    background-color: transparent !important;
+    color: var(--red) !important;
     transform: translateY(-3px);
 }
 
-/* --- Policy Cards (นโยบาย) --- */
+/* นโยบาย */
 .policy-card {
-    background: white;
-    padding: 40px 20px;
-    border-radius: 10px;
-    text-align: center;
-    border-bottom: 5px solid var(--red);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    transition: 0.4s;
-    height: 100%; /* ให้กล่องเท่ากัน */
+    background: white; padding: 30px 20px; border-radius: 10px;
+    text-align: center; border-bottom: 5px solid var(--red);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.4s;
 }
+.policy-card:hover { transform: translateY(-10px); }
+.policy-icon { font-size: 2.5rem; color: var(--red); margin-bottom: 15px; }
+.red-line { width: 60px; height: 4px; background: var(--red); margin: 10px auto; }
 
-.policy-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+/* แก้รูปหัวขาด */
+.team-img { 
+    width: 100%; 
+    height: 600px; 
+    object-fit: cover; 
+    object-position: top center; /* บรรทัดนี้สำคัญที่สุดสำหรับรูปประธาน */
 }
+.team-card { border-radius: 15px; overflow: hidden; border-bottom: 5px solid var(--red); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-.policy-icon {
-    font-size: 3rem;
-    color: var(--red);
-    margin-bottom: 20px;
-}
-
-.red-line {
-    width: 80px;
-    height: 5px;
-    background-color: var(--red);
-    margin-top: 15px;
-}
-
-/* --- Team Page (หน้าสมาชิก) --- */
-.team-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    border-bottom: 5px solid var(--red);
-}
-
-/* ค้นหาและแก้ไขส่วนนี้ใน style.css */
-.team-img {
-    width: 100%;
-    height: 600px;      /* ความสูงคงที่ของกรอบรูป */
-    object-fit: cover;  /* สั่งให้ขยายเต็มกรอบโดยไม่เบี้ยว */
-
-    /* !!! บรรทัดนี้สำคัญที่สุดครับ !!! */
-    /* สั่งให้จัดตำแหน่งรูปโดยยึด "ด้านบนตรงกลาง" เป็นหลักเสมอ */
-    object-position: top center;
-    /* -------------------------------- */
-
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-/* --- Complaint Page (หน้าแจ้งเรื่อง) --- */
-.complaint-container {
-    background: #ffffff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.google-form-wrapper {
-    position: relative;
-    width: 100%;
-    height: 900px; /* ความสูงฟอร์ม */
-}
-
-@media (max-width: 768px) {
-    .google-form-wrapper {
-        height: 1100px; /* เพิ่มความสูงในมือถือ */
-    }
-}
-
-/* --- Animations --- */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.fade-in-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* สำหรับตัวเลือกหน่วงเวลาแสดงผล */
-.delay-100 { transition-delay: 0.1s; }
-.delay-200 { transition-delay: 0.2s; }
-.delay-300 { transition-delay: 0.3s; }
-.delay-400 { transition-delay: 0.4s; }
-
-/* --- Footer --- */
-footer {
-    padding: 40px 0;
-    letter-spacing: 1px;
-}
-
-.text-red {
-    color: var(--red) !important;
-}
+/* อนิเมชั่น */
+.fade-in-up { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.fade-in-up.visible { opacity: 1; transform: translateY(0); }
+.text-red { color: var(--red) !important; }
