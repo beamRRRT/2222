@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. ส่วน Animation (ค่อยๆ ลอยขึ้นมา) ---
+    // --- 1. ส่วน Animation (ค่อยๆ ลอยขึ้นมาเมื่อ Scroll ถึง) ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -16,37 +16,31 @@ document.addEventListener('DOMContentLoaded', () => {
     checkPopupStatus();
 });
 
-// --- ฟังก์ชันตรวจสอบว่าควรแสดง Popup หรือไม่ ---
+// --- ฟังก์ชันตรวจสอบสถานะ Popup ---
 function checkPopupStatus() {
-    const hideUntil = localStorage.getItem('ancPopupHiddenUntil');
-    const now = new Date().getTime();
+    // ใช้ sessionStorage: จะแสดง Popup 1 ครั้งต่อการเปิดเบราว์เซอร์ครั้งนั้นๆ
+    // หากผู้ใช้ปิด Tab แล้วเข้าใหม่ Popup จะปรากฏอีกครั้ง (ป้องกันการเผลอกดปิดแล้วหาไม่เจอ)
+    const isClosed = sessionStorage.getItem('ancPopupClosed');
 
-    // ถ้ายังไม่มีค่า หรือ เวลาปัจจุบัน เลยเวลาที่กำหนดไว้แล้ว -> ให้แสดง Popup
-    if (!hideUntil || now > hideUntil) {
-        console.log("ANC Dev: Popup กำลังจะแสดงผล...");
+    if (!isClosed) {
+        console.log("ANC Dev: กำลังเตรียมแสดง Popup นโยบาย...");
         setTimeout(() => {
             const modalEl = document.getElementById('specialPolicyModal');
             if(modalEl) {
                 const myModal = new bootstrap.Modal(modalEl);
                 myModal.show();
             }
-        }, 1500); // หน่วงเวลา 1.5 วินาที
+        }, 1500); // หน่วงเวลา 1.5 วินาทีให้ดูนุ่มนวล
     } else {
-        // คำนวณเวลาที่เหลือ (นาที) สำหรับ Dev ดูใน Console
-        const timeLeft = Math.round((hideUntil - now) / 1000 / 60);
-        console.log(`ANC Dev: Popup ถูกซ่อนอยู่ จะแสดงอีกครั้งใน ${timeLeft} นาที`);
+        console.log("ANC Dev: Popup ถูกปิดไปแล้วใน Session นี้");
     }
 }
 
-// --- ฟังก์ชันเมื่อกดปุ่ม "ไม่แสดงอีก 1 ชั่วโมง" (แก้บั๊กเลื่อนหน้าจอไม่ได้) ---
-function closePopupForHour() {
-    const now = new Date().getTime();
-    const oneHour = 60 * 60 * 1000; 
-    const futureTime = now + oneHour; 
-
-    // บันทึกเวลา
-    localStorage.setItem('ancPopupHiddenUntil', futureTime);
-    console.log("ANC Dev: บันทึกเวลาปิด Popup 1 ชม. เรียบร้อย");
+// --- ฟังก์ชันปิด Popup (ใช้เมื่อกดปุ่ม "รับทราบ" หรือ "ดูนโยบาย") ---
+function closePopupSimple() {
+    // บันทึกสถานะว่าปิดแล้วใน Session นี้
+    sessionStorage.setItem('ancPopupClosed', 'true');
+    console.log("ANC Dev: ปิด Popup เรียบร้อย (จะแสดงอีกครั้งเมื่อเปิด Browser ใหม่)");
 
     // 1. สั่งปิด Modal ผ่าน Bootstrap Instance
     const modalEl = document.getElementById('specialPolicyModal');
@@ -56,21 +50,22 @@ function closePopupForHour() {
         modalInstance.hide(); 
     }
 
-    // 2. บังคับปลดล็อคหน้าจอทันที (แก้ปัญหา Scroll ไม่ได้)
+    // 2. บังคับปลดล็อคหน้าจอ (แก้ปัญหา Scroll ไม่ได้หลังจากปิด Modal)
     setTimeout(() => {
         document.body.classList.remove('modal-open');
         document.body.style.overflow = '';
         document.body.style.paddingRight = '';
 
-        // ลบฉากหลังสีดำที่อาจค้างอยู่
+        // ลบฉากหลังสีดำ (Backdrop) ที่อาจค้างอยู่
         const backdrops = document.querySelectorAll('.modal-backdrop');
         backdrops.forEach(backdrop => backdrop.remove());
-    }, 300); // รอจังหวะนิดนึงเพื่อให้ Animation จบก่อนค่อยลบ
+    }, 300);
 }
 
-// --- สำหรับ Developer (ปุ่ม Reset เวลา) ---
+// --- สำหรับ Developer (ปุ่ม Reset เพื่อทดสอบ) ---
 function resetPopupTimer() {
-    localStorage.removeItem('ancPopupHiddenUntil');
-    alert("Dev: ล้างค่าเวลาแล้ว! เว็บจะรีโหลดเพื่อแสดง Popup ใหม่");
+    sessionStorage.removeItem('ancPopupClosed');
+    localStorage.removeItem('ancPopupHiddenUntil'); // ล้างค่าเก่าเผื่อมีค้างในเครื่อง
+    alert("Dev: ล้างค่าการแสดงผลแล้ว! ระบบจะรีโหลดเพื่อแสดง Popup ใหม่");
     location.reload(); 
 }

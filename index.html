@@ -10,15 +10,11 @@
     <meta property="og:title" content="ANC START TODAY | เริ่มวันนี้ เพื่อสิ่งที่ดีกว่า">
     <meta property="og:description" content="พรรค ANC START TODAY - กล้าเปลี่ยน เพื่ออนาคตที่ดีกว่า">
     <meta property="og:image" content="https://beamrrrt.github.io/2222/LOGO.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="1200">
     
     <link rel="icon" href="LOGO.png" type="image/png">
-
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,11 +29,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link active px-3" href="index.html">หน้าแรก</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#policies">นโยบาย</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html#policies">นโยบายหลัก</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 text-warning fw-bold" href="special-policy.html">นโยบายพิเศษ ✨</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="team.html">สมาชิก</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="complaint.html">แจ้งเรื่องร้องเรียน</a></li>
-                    <li class="nav-item"><a class="nav-link btn-red-lg py-2 px-4 ms-lg-3" href="#join">ติดต่อเรา</a></li>
+                    <li class="nav-item"><a class="nav-link btn-red-lg py-2 px-4 ms-lg-3" href="index.html#join">ติดต่อเรา</a></li>
                 </ul>
             </div>
         </div>
@@ -48,11 +45,8 @@
             <h1 class="display-1 fw-extrabold mb-0">START <span class="text-red">TODAY</span></h1>
             <p class="h3 fw-light mb-5 text-uppercase">กล้าเปลี่ยน เพื่ออนาคตที่ดีกว่า</p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="#policies" class="btn btn-red-lg">นโยบายของเรา</a>
-                <a href="team.html" class="btn btn-red-lg">รู้จักสมาชิก</a>
-                <a href="complaint.html" class="btn btn-red-lg shadow-lg">
-                    <i class="fas fa-exclamation-triangle me-2"></i>แจ้งเรื่องร้องเรียน
-                </a>
+                <a href="#policies" class="btn btn-red-lg">ดูนโยบายหลัก</a>
+                <a href="special-policy.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 5px;">เจาะลึกนโยบายพิเศษ</a>
             </div>
         </div>
     </header>
@@ -60,7 +54,7 @@
     <section id="policies" class="py-5 bg-white">
         <div class="container py-5">
             <div class="text-center mb-5 fade-in-up">
-                <h2 class="fw-extrabold text-black display-5 text-uppercase">นโยบายทั้ง 8 <span class="text-red">ANC START TODAY</span></h2>
+                <h2 class="fw-extrabold text-black display-5 text-uppercase">นโยบายหลัก <span class="text-red">ANC START TODAY</span></h2>
                 <div class="red-line mx-auto"></div>
             </div>
 
@@ -96,72 +90,23 @@
         <p class="small mb-0">© 2026 ANC.START TODAY | MADE BY BEAMICTP.</p>
     </footer>
 
-    <div class="modal fade" id="specialPolicyModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal fade" id="specialPolicyModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0 shadow-lg" style="border-radius: 15px; overflow: hidden;">
                 <div class="modal-header bg-danger text-white border-0 py-3">
-                    <h4 class="modal-title fw-extrabold">
-                        <i class="fas fa-star text-warning me-2"></i> นโยบายพิเศษ (Special Edition)
-                    </h4>
+                    <h4 class="modal-title fw-extrabold"><i class="fas fa-star text-warning me-2"></i> นโยบายพิเศษล่าสุด</h4>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-4 bg-light">
-                    <div class="alert alert-warning border-warning text-dark mb-4">
-                        <i class="fas fa-bullhorn me-2"></i> <strong>ประกาศด่วน!</strong> กิจกรรมเพิ่มเติมสำหรับชาว ANC
-                    </div>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="p-3 bg-white rounded shadow-sm h-100 border-start border-4 border-danger">
-                                <h5 class="fw-bold text-danger"><i class="fas fa-mask me-2"></i>ประกวดแต่งตัวเทศกาล</h5>
-                                <p class="small mb-0">จัดเต็มทุกเทศกาล (ตรุษจีน, ฮาโลวีน) พื้นที่ปล่อยของ!</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 bg-white rounded shadow-sm h-100 border-start border-4 border-danger">
-                                <h5 class="fw-bold text-danger"><i class="fas fa-book-open me-2"></i>ประกวดปกสมุดโรงเรียน</h5>
-                                <p class="small mb-0">ออกแบบลายใหม่ ใช้จริงในปีการศึกษาถัดไป!</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 bg-white rounded shadow-sm h-100 border-start border-4 border-danger">
-                                <h5 class="fw-bold text-danger"><i class="fab fa-tiktok me-2"></i>TikTok Challenge</h5>
-                                <p class="small mb-0">ทำคอนเทนต์ยอดวิวสูงสุดรับรางวัลพิเศษ</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 bg-white rounded shadow-sm h-100 border-start border-4 border-danger">
-                                <h5 class="fw-bold text-danger"><i class="fas fa-calendar-check me-2"></i>ANC Friday Fever</h5>
-                                <p class="small mb-0">เปิดเวทีโชว์ของทุกสิ้นเดือน ผ่อนคลายก่อนสอบ</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 bg-white rounded shadow-sm h-100 border-start border-4 border-danger">
-                                <h5 class="fw-bold text-danger"><i class="fas fa-ribbon me-2"></i>โบว์ ANC Signature</h5>
-                                <p class="small mb-0">โบว์สัญลักษณ์โรงเรียน เอกลักษณ์หนึ่งเดียว</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 bg-white rounded shadow-sm h-100 border-start border-4 border-danger">
-                                <h5 class="fw-bold text-danger"><i class="fas fa-palette me-2"></i>ศึกชิงแชมป์บอร์ดห้อง</h5>
-                                <p class="small mb-0">ประกวดจัดบอร์ดตามเทศกาล รับรางวัลยกห้อง!</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body p-4 bg-light text-dark text-center">
+                    <h5 class="fw-bold mb-3">เจาะลึก 6 นโยบายพิเศษเพื่อชาว ANC!</h5>
+                    <p>พบกับกิจกรรม ANC Friday Fever, TikTok Challenge และการปรับปรุงโบว์โรงเรียนแบบใหม่</p>
                 </div>
-                <div class="modal-footer bg-white border-top-0 d-flex justify-content-between">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="closePopupForHour()">
-                        <i class="fas fa-clock me-1"></i> ไม่แสดงอีก 1 ชั่วโมง
-                    </button>
-                    <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">รับทราบ</button>
+                <div class="modal-footer bg-white border-top-0 d-flex justify-content-center">
+                    <a href="special-policy.html" class="btn btn-danger px-4 fw-bold" onclick="closePopupSimple()">คลิกเพื่อดูรายละเอียด</a>
+                    <button type="button" class="btn btn-outline-secondary" onclick="closePopupSimple()">ปิดประกาศ</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div id="dev-tools" style="position: fixed; bottom: 10px; left: 10px; z-index: 9999; opacity: 0.5;">
-        <button class="btn btn-dark btn-sm" onclick="resetPopupTimer()">
-            <i class="fas fa-sync-alt"></i> Dev: Reset Popup
-        </button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
